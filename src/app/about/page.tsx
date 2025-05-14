@@ -1,11 +1,8 @@
-"use client";
-
-import { useState } from "react";
-
-export default function AboutPage() {
-  const [name, setName] = useState("");
-
+import { cookies } from "next/headers";
+export default async function AboutPage() {
+  const cookieStore = await cookies();
+  const theme = cookieStore.get("theme");
+  console.log("Theme cookie:", theme);
   console.log("About Server component");
-  // This is a server component
-  return <h1>About page</h1>;
+  return <h1>About page {new Date().toLocaleDateString()} </h1>;
 }
